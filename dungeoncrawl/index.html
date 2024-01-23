@@ -3,8 +3,20 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <p>Loot Tables example from <a href="https://hands-on-rust.com/">Hands-on Rust</a>.</p>
-    <canvas id="canvas" width="800" height="600"></canvas>
+  This is a dungeon crawler rogue-like game.<br>
+  It is written in Rust and deployed to WebAssembly.<br>
+  The project is from *Hands-on Rust* by Herbert Wolverson.<br>
+  <br>
+  You are an adventurer. Your quest is to find the Amulet of Yala.<br>
+  You must navigate the three maze-like levels filled with evil monsters to find it.<br>
+  You will find helpful items along the way.<br>
+  Death is imminent.<br>
+  -------------------<br>
+  Use the arrow keys to move.<br>
+  Use the 'g' key to pick up an item.<br>
+  Use the number keys to use an item.<br>
+  There are three levels. <br>
+    <canvas id="canvas" width="700" height="500"></canvas>
     <script src="./dungeoncrawl.js"></script>
     <script>
       window.addEventListener("load", async () => {
