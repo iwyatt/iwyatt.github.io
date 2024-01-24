@@ -23,9 +23,7 @@ There are three levels.
 
 <html>
   <body style="width: 800px;">
-  <div class="canvas-container">
     <canvas id="canvas" width="640" height="480"></canvas>
-  </div>
     <script src="./dungeoncrawl.js"></script>
     <script>
       window.addEventListener("load", async () => {
@@ -35,7 +33,3 @@ There are three levels.
   </body>
 </html>
 
-.canvas-container {
-  width: 700px;
-  height: 600px;
-}
