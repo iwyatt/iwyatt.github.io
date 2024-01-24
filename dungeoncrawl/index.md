@@ -1,7 +1,6 @@
 <html>
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <link rel="stylesheet" href="../css/style.scss">
   </head>
 </html>
 
@@ -23,8 +22,10 @@ Use the number keys to use an item.
 There are three levels.
 
 <html>
-  <body style="width: 700px;">
+  <body style="width: 800px;">
+  <div class="canvas-container">
     <canvas id="canvas" width="640" height="480"></canvas>
+  </div>
     <script src="./dungeoncrawl.js"></script>
     <script>
       window.addEventListener("load", async () => {
@@ -33,3 +34,8 @@ There are three levels.
     </script>
   </body>
 </html>
+
+.canvas-container {
+  width: 700px;
+  height: 600px;
+}
