@@ -1,3 +1,10 @@
+<html>
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="css/minimal.css">
+  </head>
+</html>
+
 # Web Applications by [Isaac Wyatt](https://www.isaacwyatt.com)
 The following is a list of my web applications that are hosted on GitHub Pages.
 Learn more about my [software development](https://isaacwyatt.com/coding) experience.
