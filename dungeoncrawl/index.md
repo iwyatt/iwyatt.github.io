@@ -7,13 +7,13 @@
 
 # Dungeon Crawler
 This is a dungeon crawler rogue-like game.
-It is written in Rust and deployed to WebAssembly.
+It is written in Rust and compiled to WebAssembly.
 The project is from [Hands-on Rust](https://www.amazon.com/Hands-Rust-Effective-Learning-Development/dp/1680508164/) by Herbert Wolverson.
 Playing the game requires a keyboard to play.
 
 # Game Premise
 You are an adventurer. Your quest is to find the Amulet of Yala.
-You must navigate the three maze-like levels filled with evil monsters to find it.
+You must navigate three maze-like levels filled with evil monsters to find it.
 You will find helpful items along the way. Death is imminent.
 
 # Instructions
@@ -33,4 +33,3 @@ There are three levels.
     </script>
   </body>
 </html>
-
