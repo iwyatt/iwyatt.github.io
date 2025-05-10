@@ -104,7 +104,7 @@
         window.addEventListener('resize', resizeAndCenterCanvas);
 
         // Load the Wasm module
-        load("target/wasm32-unknown-unknown/debug/rustman.wasm");
+        load("rustman.wasm");
 
         // Optional: A small delay after load might sometimes help if wasm init interferes
         setTimeout(resizeAndCenterCanvas, 500);
