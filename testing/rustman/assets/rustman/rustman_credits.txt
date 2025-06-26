@@ -4,15 +4,18 @@
 
 - MEGA MAN 2: PUZZLE ATTACK -
 
-
 !- CARCINIZED -!
 
 
 
+
+
+
+
+
+
+
 ORIGINAL CONCEPT BY MARK PULVER
-
-
-
 
 !CARCINIZED CONCEPT BY ISAAC WYATT!
 
@@ -20,10 +23,19 @@ ORIGINAL CONCEPT BY MARK PULVER
 
 
 
+
+
+
+
+
+
+
 ORIGINAL GRAPHICS, MUSIC, AND SFX
-------------------------
+---------------------------------
 
 CAPCOM
+
+
 
 
 
@@ -35,9 +47,7 @@ PROGRAMMING
 
 MARK PULVER
 
-
 !CHASE BOLEN!
-
 
 !ISAAC WYATT!
 
@@ -47,13 +57,12 @@ MARK PULVER
 
 
 
+
+
 !RUSTMAN BATTLE MUSIC!
------------------
+----------------------
 
 !MARK ANTHONY BROOKS!
-
-
-
 
 
 
@@ -66,15 +75,10 @@ MARK PULVER
 
 
 
-
-
-
 WILY BATTLE MUSIC
 -----------------
 
 QUICKSHOT GAME METAL
-
-
 
 
 
@@ -87,18 +91,12 @@ MARK PULVER
 
 
 
-
-
-
 ANIMATION
 ---------
 
 MARK PULVER
 
-
 !JOHN BOND!
-
-
 
 
 
@@ -108,11 +106,7 @@ VERY SPECIAL THANKS
 
 BRIAN KERR
 
-
-!SEATTLE RUST USER MEETUP GROUP!
-
-
-
+!SEATTLE RUST USER GROUP!
 
 
 
@@ -124,6 +118,13 @@ BRIAN KERR
 ALL ELEMENTS FROM MEGA MAN GAMES
 ARE COPYRIGHTED BY CAPCOM
 AND USED WITH PERMISSION
+
+
+
+
+
+
+
 
 ALL RIGHTS RESERVED
 
@@ -139,5 +140,3 @@ ALL RIGHTS RESERVED
 
 
 THANK YOU FOR PLAYING!
-
-

@@ -48,7 +48,6 @@
     <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/js/mq_js_bundle.js -->
     <!-- <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script> -->
     <script src="mq_js_bundle.js"></script>
-    <!-- <script src="quad-net.js"></script> -->
 
     <script>
         const canvasElement = document.getElementById('glcanvas');
@@ -56,7 +55,7 @@
         const aspectRatio = 3 / 2; // Width / Height ratio
 
         function resizeAndCenterCanvas() {
-            // --- Calculate Available Space (95% of body) ---
+            // --- Calculate Available Space (97% of body) ---
             // Use clientWidth/clientHeight which account for padding but not borders/margins
             const availableWidth = bodyElement.clientWidth * 1.;
             const availableHeight = bodyElement.clientHeight * 0.97;
@@ -106,10 +105,6 @@
 
             // --- Set Vertical Position ---
             canvasElement.style.top = '10px'; // Keep the 10px top offset
-
-            // Wasm resize notification comment remains relevant
-            // If your wasm needs explicit notification beyond what mq_js_bundle does,
-            // you might need to call a wasm function here.
         }
 
         // Run resize logic initially and on window resize
@@ -119,7 +114,7 @@
         // Load the Wasm module
         load("rustman.wasm");
 
-        // Optional: A small delay after load might sometimes help if wasm init interferes
+        // A small delay after load helps when wasm init interferes
         setTimeout(resizeAndCenterCanvas, 500);
 
     </script>
