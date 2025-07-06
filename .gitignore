@@ -1,0 +1,3 @@
+testing/rustman/assets/*
+!testing/rustman/assets/
+!testing/rustman/assets/assets.zip
