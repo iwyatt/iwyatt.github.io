@@ -50,86 +50,82 @@ MegaMan 2: Puzzle Attack - 🦀 Carcinized is a Tetris / MegaMan 2 mashup fan ga
 
 <html>
 <body>
-    <div id="div_glcanvas">
-        <canvas id="glcanvas" tabindex='1'></canvas>
-        <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/js/mq_js_bundle.js -->
-        <!-- <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script> -->
-        <script src="mq_js_bundle.js"></script>
-        <script src="sapp_jsutils.js"></script>
-        <script src="quad-storage.js"></script>
+    <canvas id="glcanvas" tabindex='1'></canvas>
+    <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/js/mq_js_bundle.js -->
+    <!-- <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script> -->
+    <script src="mq_js_bundle.js"></script>
+    <script src="sapp_jsutils.js"></script>
+    <script src="quad-storage.js"></script>
 
-        <script>
-            const canvasElement = document.getElementById('glcanvas');
-            const bodyElement = document.body; // Get reference to body
-            const divElement = document.getElementById('div_glcanvas'); // Get reference to div
+    <script>
+        const canvasElement = document.getElementById('glcanvas');
+        const bodyElement = document.body; // Get reference to body
+        const aspectRatio = 3 / 2; // Width / Height ratio
 
-            const aspectRatio = 3 / 2; // Width / Height ratio
+        function resizeAndCenterCanvas() {
+            // --- Calculate Available Space (97% of body) ---
+            // Use clientWidth/clientHeight which account for padding but not borders/margins
+            const availableWidth = bodyElement.clientWidth * 1.;
+            const availableHeight = bodyElement.clientHeight * 0.97;
 
-            function resizeAndCenterCanvas() {
-                // --- Calculate Available Space (97% of body) ---
-                // Use clientWidth/clientHeight which account for padding but not borders/margins
-                const availableWidth = divElement.clientWidth * 1.;
-                const availableHeight = divElement.clientHeight * 0.97;
+            // --- Determine Target Size based on Aspect Ratio and Available Space ---
+            let targetWidth, targetHeight;
 
-                // --- Determine Target Size based on Aspect Ratio and Available Space ---
-                let targetWidth, targetHeight;
+            // Calculate size if available width is the limiting factor
+            let widthBasedOnWidth = availableWidth;
+            let heightBasedOnWidth = widthBasedOnWidth / aspectRatio;
 
-                // Calculate size if available width is the limiting factor
-                let widthBasedOnWidth = availableWidth;
-                let heightBasedOnWidth = widthBasedOnWidth / aspectRatio;
+            // Calculate size if available height is the limiting factor
+            let heightBasedOnHeight = availableHeight;
+            let widthBasedOnHeight = heightBasedOnHeight * aspectRatio;
 
-                // Calculate size if available height is the limiting factor
-                let heightBasedOnHeight = availableHeight;
-                let widthBasedOnHeight = heightBasedOnHeight * aspectRatio;
-
-                // Choose the scenario that fits within *both* available dimensions
-                // If sizing based on width makes it too tall, then we must size based on height.
-                if (heightBasedOnWidth <= availableHeight) {
-                    // Width-based calculation fits vertically, use it
-                    targetWidth = widthBasedOnWidth;
-                    targetHeight = heightBasedOnWidth;
-                } else {
-                    // Width-based calculation was too tall, so height must be the constraint
-                    targetWidth = widthBasedOnHeight;
-                    targetHeight = heightBasedOnHeight;
-                }
-
-                // Ensure minimum size (optional, but good practice)
-                targetWidth = Math.max(320, targetWidth); // Min width 10px
-                targetHeight = Math.max(240 / aspectRatio, targetHeight); // Min height based on ratio
-
-                // Round to whole pixels
-                targetWidth = Math.round(targetWidth);
-                targetHeight = Math.round(targetHeight);
-
-                // --- Apply Size to Canvas ---
-                canvasElement.width = targetWidth; // Set drawing buffer size
-                canvasElement.height = targetHeight;
-                canvasElement.style.width = targetWidth + 'px'; // Set CSS display size
-                canvasElement.style.height = targetHeight + 'px';
-
-                // --- Center Canvas Horizontally within Window ---
-                // Note: Centering within the window, not the body element
-                const windowWidth = window.innerWidth;
-                const leftOffset = (windowWidth - targetWidth) / 2;
-                canvasElement.style.left = Math.round(leftOffset) + 'px';
-
-                // --- Set Vertical Position ---
-                canvasElement.style.top = '10px'; // Keep the 10px top offset
+            // Choose the scenario that fits within *both* available dimensions
+            // If sizing based on width makes it too tall, then we must size based on height.
+            if (heightBasedOnWidth <= availableHeight) {
+                // Width-based calculation fits vertically, use it
+                targetWidth = widthBasedOnWidth;
+                targetHeight = heightBasedOnWidth;
+            } else {
+                // Width-based calculation was too tall, so height must be the constraint
+                targetWidth = widthBasedOnHeight;
+                targetHeight = heightBasedOnHeight;
             }
 
-            // Run resize logic initially and on window resize
-            window.addEventListener('DOMContentLoaded', resizeAndCenterCanvas);
-            window.addEventListener('resize', resizeAndCenterCanvas);
+            // Ensure minimum size (optional, but good practice)
+            targetWidth = Math.max(320, targetWidth); // Min width 10px
+            targetHeight = Math.max(240 / aspectRatio, targetHeight); // Min height based on ratio
 
-            // Load the Wasm module
-            load("rustman.wasm");
+            // Round to whole pixels
+            targetWidth = Math.round(targetWidth);
+            targetHeight = Math.round(targetHeight);
 
-            // A small delay after load helps when wasm init interferes
-            setTimeout(resizeAndCenterCanvas, 500);
+            // --- Apply Size to Canvas ---
+            canvasElement.width = targetWidth; // Set drawing buffer size
+            canvasElement.height = targetHeight;
+            canvasElement.style.width = targetWidth + 'px'; // Set CSS display size
+            canvasElement.style.height = targetHeight + 'px';
 
-        </script>
-    </div>
+            // --- Center Canvas Horizontally within Window ---
+            // Note: Centering within the window, not the body element
+            const windowWidth = window.innerWidth;
+            const leftOffset = (windowWidth - targetWidth) / 2;
+            canvasElement.style.left = Math.round(leftOffset) + 'px';
+
+            // --- Set Vertical Position ---
+            canvasElement.style.top = '10px'; // Keep the 10px top offset
+        }
+
+        // Run resize logic initially and on window resize
+        window.addEventListener('DOMContentLoaded', resizeAndCenterCanvas);
+        window.addEventListener('resize', resizeAndCenterCanvas);
+
+        // Load the Wasm module
+        load("rustman.wasm");
+
+        // A small delay after load helps when wasm init interferes
+        setTimeout(resizeAndCenterCanvas, 500);
+
+    </script>
 </body>
 </html>
 
