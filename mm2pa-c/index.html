@@ -40,11 +40,28 @@
             /* top: 10px; will be set by JS */
             /* left: ...; will be set by JS */
         }
+
+        #start-button {
+            position: absolute;
+            z-index: 1;
+            /* Positioning is handled by JS */
+            padding: 15px 25px;
+            font-size: 24px;
+            font-family: sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px black;
+        }
     </style>
 </head>
 
 <body>
     <canvas id="glcanvas" tabindex='1'></canvas>
+    <button id="start-button">🦀 Get Carcinized!</button>
     <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/js/mq_js_bundle.js -->
     <!-- <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script> -->
     <script src="mq_js_bundle.js"></script>
@@ -53,6 +70,7 @@
 
     <script>
         const canvasElement = document.getElementById('glcanvas');
+        const startButton = document.getElementById('start-button');
         const bodyElement = document.body; // Get reference to body
         const aspectRatio = 3 / 2; // Width / Height ratio
 
@@ -106,15 +124,38 @@
             canvasElement.style.left = Math.round(leftOffset) + 'px';
 
             // --- Set Vertical Position ---
-            canvasElement.style.top = '10px'; // Keep the 10px top offset
+            const topOffset = 10;
+            canvasElement.style.top = topOffset + 'px'; // Keep the 10px top offset
+
+            // --- Center the button over the canvas ---
+            if (startButton.style.display !== 'none') {
+                const buttonWidth = startButton.offsetWidth;
+                const buttonHeight = startButton.offsetHeight;
+                startButton.style.left = (leftOffset + (targetWidth - buttonWidth) / 2) + 'px';
+                startButton.style.top = (topOffset + (targetHeight - buttonHeight) / 2) + 'px';
+            }
         }
 
         // Run resize logic initially and on window resize
         window.addEventListener('DOMContentLoaded', resizeAndCenterCanvas);
         window.addEventListener('resize', resizeAndCenterCanvas);
 
-        // Load the Wasm module
-        load("rustman.wasm");
+        function startGame() {
+            // Hide the button
+            startButton.style.display = 'none';
+            // Focus the canvas to capture keyboard input
+            canvasElement.focus();
+            // Load the Wasm module
+            load("mm2pa-c.wasm");
+        }
+
+        // Add event listeners for both click and touch events
+        startButton.addEventListener('click', startGame);
+        startButton.addEventListener('touchend', function(event) {
+            event.preventDefault(); // Prevent firing a click event as well
+            startGame();
+        });
+
 
         // A small delay after load helps when wasm init interferes
         setTimeout(resizeAndCenterCanvas, 500);
